@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  PostResult postResult;
+  PostResult? postResult;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,8 +24,11 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text((postResult != null)
-                  ? postResult.id + "|" + postResult.name
-                  : "tidak ada"),
+                  ? postResult!.name.toString() +
+                      "|" +
+                      postResult!.id.toString() +
+                      "|"
+                  : 'tidak ada'),
               ElevatedButton(
                   onPressed: () {
                     PostResult.connectToAPI("baju", "dokter").then((value) {

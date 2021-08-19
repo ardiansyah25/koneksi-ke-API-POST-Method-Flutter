@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class PostResult {
-  String id;
-  String name;
-  String job;
-  String created;
+  String? id;
+  String? name;
+  String? job;
+  String? created;
 
   PostResult({
     this.id,
