@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:konek_api/post_result_model.dart';
+import 'package:konek_api/user_model.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +13,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   PostResult? postResult;
+  User? user;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,16 +25,13 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text((postResult != null)
-                  ? postResult!.name.toString() +
-                      "|" +
-                      postResult!.id.toString() +
-                      "|"
+              Text((user != null)
+                  ? user!.id.toString() + "|" + user!.name.toString() + "|"
                   : 'tidak ada'),
               ElevatedButton(
                   onPressed: () {
-                    PostResult.connectToAPI("baju", "dokter").then((value) {
-                      postResult = value;
+                    User.connectToAPI("2").then((value) {
+                      user = value;
                       setState(() {});
                     });
                   },
